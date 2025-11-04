@@ -1,5 +1,6 @@
 import React from 'react';
 import { Database, Server, Boxes, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const items = [
   {
@@ -26,23 +27,29 @@ const items = [
 
 export default function TechStack() {
   return (
-    <section id="stack" className="relative w-full bg-[#0a0b0f] py-20 text-white">
+    <section id="skills" aria-label="Skills" className="relative w-full bg-[#0a0b0f] py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-2xl font-semibold">Core Stack</h2>
-        <p className="mt-2 text-white/60">Tools I use daily to ship reliable backends.</p>
+        <motion.div initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <h2 className="text-2xl font-semibold">Skills</h2>
+          <p className="mt-2 text-white/70">The tools and practices I use to ship reliable backends.</p>
+        </motion.div>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item) => (
-            <div
+          {items.map((item, idx) => (
+            <motion.div
               key={item.title}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.05 * idx }}
               className="group rounded-xl border border-white/10 bg-white/5 p-5 transition hover:border-emerald-400/40 hover:bg-white/10"
             >
               <div className="mb-3 inline-flex rounded-md border border-white/10 bg-white/5 p-2 text-emerald-300">
                 <item.icon className="h-5 w-5" />
               </div>
               <h3 className="text-base font-medium">{item.title}</h3>
-              <p className="mt-1 text-sm text-white/60">{item.desc}</p>
-            </div>
+              <p className="mt-1 text-sm text-white/70">{item.desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>
